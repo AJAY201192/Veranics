@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Veranics — AI-Native Product Engineering & Technology Consulting</title>
+<meta name="description" content="Veranics designs, builds, and scales intelligent digital platforms. Makers of SmartProp, AlgoLevel and MyVive." />
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;background:#fff;color:#0B1120;-webkit-font-smoothing:antialiased}
+  .font-display{font-family:'Space Grotesk',sans-serif;letter-spacing:-.02em}
+  .grad-text{background:linear-gradient(90deg,#1E5BFF,#7C3AED);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .grad-btn{background:#1E5BFF;box-shadow:0 8px 24px -8px rgba(30,91,255,.5)}
+  .grad-btn:hover{background:#1747cc}
+  .reveal{opacity:0;transform:translateY(20px);transition:all .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  .glow-bg{background:radial-gradient(ellipse 60% 50% at 50% -10%,rgba(30,91,255,.18),transparent 60%)}
+  .glow-bg-b{background:radial-gradient(ellipse 80% 50% at 50% 120%,rgba(124,58,237,.15),transparent 60%)}
+  .card{transition:transform .25s ease, box-shadow .25s ease}
+  .card:hover{transform:translateY(-4px);box-shadow:0 24px 48px -16px rgba(15,23,42,.18)}
+  .nav-link{position:relative}
+  .nav-link::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:0;background:#1E5BFF;transition:width .25s}
+  .nav-link:hover::after,.nav-link.active::after{width:100%}
+  .page{display:none}
+  .page.active{display:block}
+  .hide-scroll::-webkit-scrollbar{display:none}
+  /* Veranics V logo */
+  .v-logo{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#1E5BFF,#7C3AED);color:#fff;font-weight:800;font-family:'Space Grotesk',sans-serif;font-size:18px;box-shadow:0 6px 16px -4px rgba(30,91,255,.5)}
+  /* SmartProp logo (house) */
+  .sp-logo{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,#10b981,#0ea5e9);color:#fff;box-shadow:0 8px 20px -6px rgba(16,185,129,.5)}
+  /* MyVive logo (leaf) */
+  .mv-logo{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,#ec4899,#f97316);color:#fff;box-shadow:0 8px 20px -6px rgba(236,72,153,.5)}
+  .al-logo{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:14px;background:#0B1120;padding:8px}
+</style>
+</head>
+<body>
+
+<!-- =================== NAV =================== -->
+<header class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="#/" class="flex items-center gap-2.5" data-link>
+      <span class="v-logo">V</span>
+      <span class="font-display font-bold text-xl">Veranics</span>
+    </a>
+    <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-gray-700">
+      <a href="#/" data-link class="nav-link">Home</a>
+      <a href="#/services" data-link class="nav-link">Services</a>
+      <a href="#/products" data-link class="nav-link">Products</a>
+      <a href="#/technology" data-link class="nav-link">Technology</a>
+      <a href="#/insights" data-link class="nav-link">Insights</a>
+      <a href="#/about" data-link class="nav-link">About</a>
+      <a href="#/contact" data-link class="nav-link">Contact</a>
+    </nav>
+    <a href="#/contact" data-link class="hidden sm:inline-flex grad-btn text-white text-sm font-semibold px-5 h-10 rounded-full items-center gap-1.5">
+      Start a Project <i data-lucide="arrow-right" class="w-4 h-4"></i>
+    </a>
+    <button id="menuBtn" class="lg:hidden p-2 -mr-2"><i data-lucide="menu" class="w-6 h-6"></i></button>
+  </div>
+  <div id="mobileMenu" class="lg:hidden hidden border-t border-gray-100 bg-white">
+    <div class="px-6 py-4 grid gap-3 text-sm font-medium">
+      <a href="#/" data-link>Home</a>
+      <a href="#/services" data-link>Services</a>
+      <a href="#/products" data-link>Products</a>
+      <a href="#/technology" data-link>Technology</a>
+      <a href="#/insights" data-link>Insights</a>
+      <a href="#/about" data-link>About</a>
+      <a href="#/contact" data-link>Contact</a>
+    </div>
+  </div>
+</header>
+
+<main id="app">
+
+<!-- ============ HOME ============ -->
+<section class="page" id="page-home">
+  <!-- Hero -->
+  <section class="relative bg-[#0B1120] text-white overflow-hidden">
+    <div class="absolute inset-0 glow-bg"></div>
+    <div class="relative max-w-7xl mx-auto px-6 py-24 lg:py-32 grid lg:grid-cols-2 gap-12 items-center">
+      <div class="reveal">
+        <p class="text-xs font-bold tracking-[0.2em] uppercase text-blue-400 mb-5">AI-Native Product Engineering</p>
+        <h1 class="font-display text-5xl lg:text-6xl font-bold leading-[1.05] mb-6">
+          Build the future with <span class="grad-text">intelligent products</span>
+        </h1>
+        <p class="text-lg text-gray-400 leading-relaxed mb-8 max-w-xl">
+          Veranics partners with ambitious teams to design, engineer, and scale AI-native platforms — from concept to launch.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a href="#/services" data-link class="grad-btn text-white font-semibold px-7 h-12 rounded-full inline-flex items-center gap-1.5">Explore Services <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+          <a href="#/contact" data-link class="border border-white/20 hover:bg-white/10 text-white font-semibold px-7 h-12 rounded-full inline-flex items-center gap-1.5">Start a Project</a>
+        </div>
+      </div>
+      <div class="reveal relative">
+        <div class="aspect-square rounded-3xl bg-gradient-to-br from-blue-500/20 via-purple-500/10 to-transparent border border-white/10 backdrop-blur p-8 flex items-center justify-center">
+          <div class="grid grid-cols-2 gap-4 w-full">
+            <div class="rounded-2xl bg-white/[0.06] border border-white/10 p-5"><i data-lucide="cpu" class="w-7 h-7 text-blue-400 mb-3"></i><p class="text-sm font-semibold">AI Engineering</p><p class="text-xs text-gray-400 mt-1">LLM & agents</p></div>
+            <div class="rounded-2xl bg-white/[0.06] border border-white/10 p-5"><i data-lucide="layers" class="w-7 h-7 text-purple-400 mb-3"></i><p class="text-sm font-semibold">Platforms</p><p class="text-xs text-gray-400 mt-1">Cloud-native</p></div>
+            <div class="rounded-2xl bg-white/[0.06] border border-white/10 p-5"><i data-lucide="bar-chart-3" class="w-7 h-7 text-emerald-400 mb-3"></i><p class="text-sm font-semibold">Data</p><p class="text-xs text-gray-400 mt-1">Pipelines & ML</p></div>
+            <div class="rounded-2xl bg-white/[0.06] border border-white/10 p-5"><i data-lucide="shield-check" class="w-7 h-7 text-amber-400 mb-3"></i><p class="text-sm font-semibold">Security</p><p class="text-xs text-gray-400 mt-1">Enterprise grade</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="py-16 border-y border-gray-100">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="reveal"><div class="font-display text-4xl font-bold grad-text">50+</div><p class="text-sm text-gray-500 mt-2">Products shipped</p></div>
+      <div class="reveal"><div class="font-display text-4xl font-bold grad-text">3</div><p class="text-sm text-gray-500 mt-2">Owned SaaS products</p></div>
+      <div class="reveal"><div class="font-display text-4xl font-bold grad-text">98%</div><p class="text-sm text-gray-500 mt-2">Client retention</p></div>
+      <div class="reveal"><div class="font-display text-4xl font-bold grad-text">12+</div><p class="text-sm text-gray-500 mt-2">Industries served</p></div>
+    </div>
+  </section>
+
+  <!-- Products preview -->
+  <section class="py-24 px-6 bg-gray-50">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-14 reveal">
+        <p class="text-xs font-bold tracking-[0.2em] uppercase text-blue-600 mb-3">Our Products</p>
+        <h2 class="font-display text-4xl font-bold">Software we built, <span class="grad-text">loved by users</span></h2>
+      </div>
+      <div id="home-products" class="grid md:grid-cols-3 gap-6"></div>
+      <div class="text-center mt-10"><a href="#/products" data-link class="text-blue-600 font-semibold inline-flex items-center gap-1.5">See all products <i data-lucide="arrow-right" class="w-4 h-4"></i></a></div>
+    </div>
+  </section>
+
+  <!-- Services preview -->
+  <section class="py-24 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-14 reveal">
+        <p class="text-xs font-bold tracking-[0.2em] uppercase text-blue-600 mb-3">Services</p>
+        <h2 class="font-display text-4xl font-bold">End-to-end product engineering</h2>
+      </div>
+      <div id="home-services" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative py-24 px-6 bg-[#0B1120] text-white overflow-hidden">
+    <div class="absolute inset-0 glow-bg-b"></div>
+    <div class="relative max-w-3xl mx-auto text-center">
+      <h2 class="font-display text-4xl font-bold mb-5">Have an idea? Let's build it.</h2>
+      <p class="text-gray-400 mb-8">Tell us about your project and we'll respond within 24 hours.</p>
+      <a href="#/contact" data-link class="grad-btn text-white font-semibold px-8 h-12 rounded-full inline-flex items-center gap-1.5">Start a Conversation <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+    </div>
+  </section>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="page" id="page-services">
+  <section class="bg-[#0B1120] text-white py-24 px-6 relative overflow-hidden">
+    <div class="absolute inset-0 glow-bg"></div>
+    <div class="relative max-w-7xl mx-auto">
+      <p class="text-xs font-bold tracking-[0.2em] uppercase text-blue-400 mb-4">Services</p>
+      <h1 class="font-display text-5xl font-bold max-w-3xl">Engineering teams that <span class="grad-text">ship</span></h1>
+      <p class="text-lg text-gray-400 mt-5 max-w-2xl">From AI agents to enterprise platforms — we deliver production-grade software end to end.</p>
+    </div>
+  </section>
+  <section class="py-20 px-6">
+    <div id="all-services" class="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </section>
+</section>
+
+<!-- ============ PRODUCTS ============ -->
+<section class="page" id="page-products">
+  <section class="bg-[#0B1120] text-white py-24 px-6 relative overflow-hidden">
+    <div class="absolute inset-0 glow-bg"></div>
+    <div class="relative max-w-7xl mx-auto">
+      <p class="text-xs font-bold tracking-[0.2em] uppercase text-blue-400 mb-4">Products</p>
+      <h1 class="font-display text-5xl font-bold max-w-3xl">Software we <span class="grad-text">built and own</span></h1>
+      <p class="text-lg text-gray-400 mt-5 max-w-2xl">Three SaaS products shaping property management, algorithmic trading insights, and personal wellness.</p>
+    </div>
+  </section>
+  <section class="py-20 px-6">
+    <div id="all-products" class="max-w-7xl mx-auto grid gap-8"></div>
+  </section>
+</section>
+
+<!-- ============ TECHNOLOGY ============ -->
+<section class="page" id="page-technology">
+  <section class="bg-[#0B1120] text-white py-24 px-6 relative overflow-hidden">
+    <div class="absolute inset-0 glow-bg"></div>
+    <div class="relative max-w-7xl mx-auto">
+      <p class="text-xs font-bold tracking-[0.2em] uppercase text-blue-400 mb-4">Technology</p>
+      <h1 class="font-display text-5xl font-bold max-w-3xl">Our stack for <span class="grad-text">AI-native products</span></h1>
+    </div>
+  </section>
+  <div id="tech-stack"></div>
+</section>
+
+<!-- ============ INSIGHTS ============ -->
+<section class="page" id="page-insights">
+  <section class="bg-[#0B1120] text-white py-24 px-6 relative overflow-hidden">
+    <div class="absolute inset-0 glow-bg"></div>
+    <div class="relative max-w-7xl mx-auto">
+      <p class="text-xs font-bold tracking-[0.2em] uppercase text-blue-400 mb-4">Insights</p>
+      <h1 class="font-display text-5xl font-bold max-w-3xl">Ideas, playbooks & <span class="grad-text">field notes</span></h1>
+    </div>
+  </section>
+  <section class="py-20 px-6">
+    <div id="insights-grid" class="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </section>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="page" id="page-about">
+  <section class="bg-[#0B1120] text-white py-24 px-6 relative overflow-hidden">
+    <div class="absolute inset-0 glow-bg"></div>
+    <div class="relative max-w-7xl mx-auto">
+      <p class="text-xs font-bold tracking-[0.2em] uppercase text-blue-400 mb-4">About</p>
+      <h1 class="font-display text-5xl font-bold max-w-3xl">We craft software that <span class="grad-text">moves industries</span></h1>
+      <p class="text-lg text-gray-400 mt-5 max-w-2xl">Veranics is a product engineering studio building AI-native platforms — for clients, and for ourselves.</p>
+    </div>
+  </section>
+  <section class="py-20 px-6 max-w-5xl mx-auto grid md:grid-cols-2 gap-12">
+    <div><h3 class="font-display text-2xl font-bold mb-3">Our mission</h3><p class="text-gray-600 leading-relaxed">To make intelligent software accessible — by partnering with teams who want to ship faster, smarter, and at scale.</p></div>
+    <div><h3 class="font-display text-2xl font-bold mb-3">How we work</h3><p class="text-gray-600 leading-relaxed">Small, senior pods. Weekly demos. Production from day one. No agencies, no handoffs — just engineers and designers building shoulder to shoulder with you.</p></div>
+  </section>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="page" id="page-contact">
+  <section class="bg-[#0B1120] text-white py-24 px-6 relative overflow-hidden">
+    <div class="absolute inset-0 glow-bg"></div>
+    <div class="relative max-w-7xl mx-auto grid lg:grid-cols-2 gap-16">
+      <div>
+        <p class="text-xs font-bold tracking-[0.2em] uppercase text-blue-400 mb-4">Contact</p>
+        <h1 class="font-display text-5xl font-bold mb-5">Start your <span class="grad-text">project</span></h1>
+        <p class="text-gray-400 mb-10 max-w-md">Tell us about what you're building. We respond within 24 hours.</p>
+        <div class="space-y-5">
+          <a href="mailto:Info@veranics.com" class="flex items-center gap-3 text-gray-300 hover:text-white">
+            <span class="h-10 w-10 rounded-xl bg-white/[0.06] border border-white/10 flex items-center justify-center"><i data-lucide="mail" class="w-5 h-5 text-blue-400"></i></span>
+            Info@veranics.com
+          </a>
+          <a href="tel:9199199973" class="flex items-center gap-3 text-gray-300 hover:text-white">
+            <span class="h-10 w-10 rounded-xl bg-white/[0.06] border border-white/10 flex items-center justify-center"><i data-lucide="phone" class="w-5 h-5 text-blue-400"></i></span>
+            +91 91991 99973
+          </a>
+          <div class="flex items-center gap-3 text-gray-300">
+            <span class="h-10 w-10 rounded-xl bg-white/[0.06] border border-white/10 flex items-center justify-center"><i data-lucide="map-pin" class="w-5 h-5 text-blue-400"></i></span>
+            Hyderabad, India · San Francisco, CA
+          </div>
+        </div>
+      </div>
+
+      <form id="contactForm" class="bg-white/[0.06] backdrop-blur rounded-2xl p-8 border border-white/10 space-y-5">
+        <div>
+          <label class="text-sm font-medium text-gray-300 mb-1.5 block">Name</label>
+          <input name="name" required maxlength="100" placeholder="Your name" class="w-full rounded-xl bg-white/[0.06] border border-white/10 px-4 py-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+        </div>
+        <div>
+          <label class="text-sm font-medium text-gray-300 mb-1.5 block">Email</label>
+          <input type="email" name="email" required maxlength="255" placeholder="you@company.com" class="w-full rounded-xl bg-white/[0.06] border border-white/10 px-4 py-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+        </div>
+        <div>
+          <label class="text-sm font-medium text-gray-300 mb-1.5 block">Company</label>
+          <input name="company" maxlength="100" placeholder="Company name" class="w-full rounded-xl bg-white/[0.06] border border-white/10 px-4 py-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+        </div>
+        <div>
+          <label class="text-sm font-medium text-gray-300 mb-1.5 block">Project description</label>
+          <textarea name="message" rows="4" required maxlength="1000" placeholder="Tell us about your project…" class="w-full rounded-xl bg-white/[0.06] border border-white/10 px-4 py-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"></textarea>
+        </div>
+        <button type="submit" class="w-full grad-btn text-white font-semibold h-12 rounded-xl inline-flex items-center justify-center gap-2">Send message <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
+        <p id="formMsg" class="text-sm text-center hidden"></p>
+      </form>
+    </div>
+  </section>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-[#070b14] text-gray-400 py-16 px-6">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-10">
+    <div>
+      <div class="flex items-center gap-2.5 mb-4"><span class="v-logo">V</span><span class="font-display font-bold text-xl text-white">Veranics</span></div>
+      <p class="text-sm leading-relaxed">AI-native product engineering & technology consulting.</p>
+    </div>
+    <div>
+      <h4 class="text-white font-semibold mb-4 text-sm">Company</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a href="#/about" data-link class="hover:text-white">About</a></li>
+        <li><a href="#/services" data-link class="hover:text-white">Services</a></li>
+        <li><a href="#/insights" data-link class="hover:text-white">Insights</a></li>
+        <li><a href="#/contact" data-link class="hover:text-white">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-white font-semibold mb-4 text-sm">Products</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a href="https://smartprop.com" target="_blank" class="hover:text-white">SmartProp.com</a></li>
+        <li><a href="https://algolevel.com" target="_blank" class="hover:text-white">AlgoLevel.com</a></li>
+        <li><a href="https://myvive.ai" target="_blank" class="hover:text-white">MyVive.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-white font-semibold mb-4 text-sm">Contact</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a href="mailto:Info@veranics.com" class="hover:text-white">Info@veranics.com</a></li>
+        <li><a href="tel:9199199973" class="hover:text-white">+91 91991 99973</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-white/10 text-xs text-center">© <span id="yr"></span> Veranics. All rights reserved.</div>
+</footer>
+
+<script>
+/* ============ DATA ============ */
+const ALGO_LOGO = "veranics-assets/algolevel.png";
+
+const products = [
+  {
+    name: "SmartProp",
+    domain: "SmartProp.com",
+    tag: "Property Management",
+    desc: "End-to-end HOA and property management platform — residents, admins, billing, maintenance, visitor passes and more.",
+    url: "https://smartprop.com",
+    color: "from-emerald-500 to-sky-500",
+    icon: "building-2",
+    features: ["Resident portal", "HOA dues & payments", "Maintenance requests", "Visitor passes"]
+  },
+  {
+    name: "AlgoLevel",
+    domain: "AlgoLevel.com",
+    tag: "Algorithmic Trading",
+    desc: "Data-driven trading intelligence — backtesting, signal discovery and execution analytics for serious quants.",
+    url: "https://algolevel.com",
+    color: "from-blue-500 to-cyan-400",
+    icon: "trending-up",
+    img: ALGO_LOGO,
+    features: ["Backtesting engine", "Signal discovery", "Execution analytics", "Risk dashboards"]
+  },
+  {
+    name: "MyVive",
+    domain: "MyVive.ai",
+    tag: "Lifestyle & Nutrition",
+    desc: "AI-powered lifestyle and nutrition companion — personalized meal plans, habit coaching, and wellness insights.",
+    url: "https://myvive.ai",
+    color: "from-pink-500 to-orange-500",
+    icon: "leaf",
+    features: ["Nutrition planning", "Habit coaching", "Wearable sync", "AI wellness insights"]
+  }
+];
+
+const services = [
+  { icon:"sparkles", title:"AI & GenAI Engineering", desc:"LLM apps, RAG systems, agents and copilots built for production." },
+  { icon:"layers", title:"Product Engineering", desc:"Full-stack web & mobile platforms with modern tooling." },
+  { icon:"database", title:"Data & MLOps", desc:"Pipelines, feature stores, model training and observability." },
+  { icon:"cloud", title:"Cloud & DevOps", desc:"AWS, GCP, Azure — infra-as-code, CI/CD, Kubernetes." },
+  { icon:"shield-check", title:"Security & Compliance", desc:"Zero-trust architectures, SOC2 readiness, audits." },
+  { icon:"compass", title:"Product Strategy", desc:"Discovery, roadmap, design sprints and GTM support." }
+];
+
+const tech = [
+  { title:"AI & LLM", items:["OpenAI","Claude","Gemini","Llama","Hugging Face","LangChain","LlamaIndex","Cohere"] },
+  { title:"Cloud", items:["AWS","Azure","GCP","Vercel","Cloudflare","Docker","Kubernetes","Terraform"] },
+  { title:"Frontend & Mobile", items:["React","Next.js","TypeScript","Flutter","Expo","Tailwind","Vite"] },
+  { title:"Data", items:["Snowflake","Databricks","PostgreSQL","MongoDB","Redis","Kafka","dbt","Airflow"] }
+];
+
+const insights = [
+  { tag:"AI", title:"Designing RAG systems that actually work in production", desc:"Lessons from shipping retrieval pipelines for enterprise clients.", date:"May 2026" },
+  { tag:"Engineering", title:"Why we ship every Friday", desc:"Our weekly release cadence and the systems behind it.", date:"Apr 2026" },
+  { tag:"Product", title:"From idea to MVP in 6 weeks", desc:"How we run discovery and design sprints back-to-back.", date:"Mar 2026" },
+  { tag:"AI", title:"Agents vs workflows: when to use what", desc:"Practical guidance for choosing the right LLM architecture.", date:"Feb 2026" },
+  { tag:"Cloud", title:"Cost-optimized Kubernetes for AI workloads", desc:"How we cut GPU spend by 40% on a production cluster.", date:"Jan 2026" },
+  { tag:"Design", title:"Designing for trust in AI products", desc:"UX patterns that help users feel in control of intelligent systems.", date:"Dec 2025" }
+];
+
+/* ============ RENDER ============ */
+const $ = (s) => document.querySelector(s);
+
+function productCard(p, big=false){
+  const logo = p.img
+    ? `<div class="al-logo"><img src="${p.img}" alt="${p.name}" class="max-h-full max-w-full object-contain"/></div>`
+    : `<div class="sp-logo" style="background:linear-gradient(135deg,${p.name==='SmartProp'?'#10b981,#0ea5e9':'#ec4899,#f97316'})"><i data-lucide="${p.icon}" class="w-7 h-7"></i></div>`;
+  return `
+  <div class="card bg-white rounded-2xl border border-gray-100 p-7 ${big?'lg:flex lg:items-center lg:gap-8':''}">
+    <div class="${big?'lg:w-1/3':''}">
+      ${logo}
+      <p class="text-[11px] font-bold tracking-widest uppercase text-blue-600 mt-5">${p.tag}</p>
+      <h3 class="font-display text-2xl font-bold mt-1">${p.name}</h3>
+      <a href="${p.url}" target="_blank" class="text-sm text-gray-500 hover:text-blue-600">${p.domain} ↗</a>
+    </div>
+    <div class="${big?'lg:w-2/3 mt-6 lg:mt-0':'mt-4'}">
+      <p class="text-gray-600 leading-relaxed">${p.desc}</p>
+      ${big?`<ul class="grid sm:grid-cols-2 gap-2 mt-5">${p.features.map(f=>`<li class="text-sm text-gray-700 flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500"></i>${f}</li>`).join('')}</ul>`:''}
+      <a href="${p.url}" target="_blank" class="inline-flex items-center gap-1.5 text-blue-600 font-semibold text-sm mt-5">Visit site <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
+    </div>
+  </div>`;
+}
+
+function serviceCard(s){
+  return `<div class="card bg-white rounded-2xl border border-gray-100 p-6">
+    <div class="h-11 w-11 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4"><i data-lucide="${s.icon}" class="w-5 h-5"></i></div>
+    <h3 class="font-display text-lg font-bold mb-1.5">${s.title}</h3>
+    <p class="text-sm text-gray-600 leading-relaxed">${s.desc}</p>
+  </div>`;
+}
+
+function insightCard(i){
+  return `<a href="#/insights" data-link class="card block bg-white rounded-2xl border border-gray-100 p-6">
+    <span class="text-[11px] font-bold tracking-widest uppercase text-blue-600">${i.tag}</span>
+    <h3 class="font-display text-lg font-bold mt-2 mb-2">${i.title}</h3>
+    <p class="text-sm text-gray-600">${i.desc}</p>
+    <p class="text-xs text-gray-400 mt-4">${i.date}</p>
+  </a>`;
+}
+
+function renderAll(){
+  $('#home-products').innerHTML = products.map(p=>productCard(p)).join('');
+  $('#all-products').innerHTML = products.map(p=>productCard(p,true)).join('');
+  $('#home-services').innerHTML = services.map(serviceCard).join('');
+  $('#all-services').innerHTML = services.map(serviceCard).join('');
+  $('#insights-grid').innerHTML = insights.map(insightCard).join('');
+  $('#tech-stack').innerHTML = tech.map((cat,idx)=>{
+    const dark = idx%2===0;
+    return `<section class="py-20 px-6 ${dark?'bg-[#0B1120]':'bg-white'}">
+      <div class="max-w-6xl mx-auto text-center">
+        <h3 class="font-display text-3xl font-bold mb-10 ${dark?'text-white':''}">${cat.title}</h3>
+        <div class="flex flex-wrap justify-center gap-3">
+          ${cat.items.map(t=>`<span class="px-5 py-2.5 rounded-xl text-sm font-semibold ${dark?'bg-white/[0.08] border border-white/10 text-white':'bg-white border border-gray-200 text-gray-800 shadow-sm'}">${t}</span>`).join('')}
+        </div>
+      </div>
+    </section>`;
+  }).join('');
+  lucide.createIcons();
+  observeReveals();
+}
+
+/* ============ ROUTING ============ */
+function route(){
+  const hash = location.hash.replace('#/','') || 'home';
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const target = document.getElementById('page-'+hash) || document.getElementById('page-home');
+  target.classList.add('active');
+  document.querySelectorAll('[data-link]').forEach(a=>{
+    a.classList.toggle('active', a.getAttribute('href') === '#/'+(hash==='home'?'':hash));
+  });
+  window.scrollTo({top:0,behavior:'instant'});
+  $('#mobileMenu').classList.add('hidden');
+}
+window.addEventListener('hashchange', route);
+
+/* ============ INIT ============ */
+$('#menuBtn').addEventListener('click', ()=> $('#mobileMenu').classList.toggle('hidden'));
+$('#yr').textContent = new Date().getFullYear();
+
+/* contact form */
+$('#contactForm').addEventListener('submit', (e)=>{
+  e.preventDefault();
+  const form = e.target;
+  const data = Object.fromEntries(new FormData(form).entries());
+  const msg = $('#formMsg');
+  if(!data.name.trim() || !data.email.trim() || !data.message.trim()){
+    msg.textContent='Please fill in all required fields.'; msg.className='text-sm text-center text-red-400'; return;
+  }
+  // Build a mailto fallback so the form actually works without backend
+  const body = encodeURIComponent(`Name: ${data.name}\nCompany: ${data.company||'-'}\nEmail: ${data.email}\n\n${data.message}`);
+  window.location.href = `mailto:Info@veranics.com?subject=${encodeURIComponent('New project inquiry from '+data.name)}&body=${body}`;
+  msg.textContent='Thanks! Your email client should open. We respond within 24 hours.';
+  msg.className='text-sm text-center text-emerald-400';
+  form.reset();
+});
+
+/* reveal */
+function observeReveals(){
+  const io = new IntersectionObserver((ents)=> ents.forEach(e=> e.isIntersecting && e.target.classList.add('in')), {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+}
+
+renderAll();
+route();
+</script>
+</body>
+</html>
